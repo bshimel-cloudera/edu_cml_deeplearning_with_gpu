@@ -44,6 +44,7 @@ class FashionCNN(nn.Module):
         """Pytorch Model Forward function
 
         Takes a sample batch of images and feeds it through the network
+        Pytorch uses N x C x H x W
 
         Arguments:
              x (Torch.tensor): a valid batch of images 

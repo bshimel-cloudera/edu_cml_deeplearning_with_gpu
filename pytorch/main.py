@@ -1,8 +1,6 @@
 #
 # Main PyTorch Code Loop
 #
-#
-#
 
 ####
 #### Installing Required Libraries

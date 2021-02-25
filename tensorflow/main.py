@@ -40,6 +40,10 @@ tf.config.list_physical_devices('GPU')
 fashion_mnist = tf.keras.datasets.fashion_mnist
 (train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
 
+# convert to floats first
+train_images = train_images.astype('float32')
+test_images = test_images.astype('float32')
+
 # Normalise image to range 0-1
 train_images = train_images / 255.0
 test_images = test_images / 255.0
@@ -47,15 +51,13 @@ test_images = test_images / 255.0
 train_images = train_images.reshape(-1, 28, 28, 1)
 test_images = test_images.reshape(-1, 28, 28, 1)
 
-train_labels = tf.keras.utils.to_categorical(train_labels)
-test_labels = tf.keras.utils.to_categorical(test_labels)
 ####
 #### Setup the Model and training task
 ####
 
 # Instantiate the model
 model = tf.keras.Sequential([
-    tf.keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),
+    tf.keras.layers.Conv2D(32, (3, 3), activation='relu', padding='same', input_shape=(28, 28, 1)),
     tf.keras.layers.BatchNormalization(momentum=0.1, epsilon=1e-05),
     tf.keras.layers.MaxPool2D(pool_size=(2,2), strides=2),
     tf.keras.layers.Conv2D(64, (3, 3), activation='relu'),
@@ -70,7 +72,7 @@ model = tf.keras.Sequential([
 
 # setup loss and optimisers
 model.compile(optimizer='adam',
-              loss='categorical_crossentropy', #tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 
 ####
@@ -78,7 +80,7 @@ model.compile(optimizer='adam',
 ####
 
 ###### Train the Model
-history = model.fit(train_images, train_labels, batch_size=100, epochs=5)
+history = model.fit(train_images, train_labels, epochs=5)
 
 ###### Evaluate the Model
 test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)

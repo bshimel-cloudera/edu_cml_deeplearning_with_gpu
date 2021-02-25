@@ -64,14 +64,13 @@ To see how much we are using GPU I will open a terminal session and load `nvidia
 
 Now we can run the rest of the script and watch our model train
 
-<screengrab of model code running>
+![TensorFlow Training Code](images/tensorflow_training.png)
 
-![Nvidia SMI crunching model](images/nvidia-smi-with-usage.png)
+![Nvidia SMI crunching model](images/nvidia-smi-w-usage.png)
 
 When our model is trained we can look at the model training results to see how good our model is.
 
-<screengrab of model training result>
-
+![Model Training Graphs](images/training_performance.png)
 
 ## More to come
 

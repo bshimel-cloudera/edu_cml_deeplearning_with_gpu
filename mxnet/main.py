@@ -10,11 +10,10 @@
 #### Installing Required Libraries
 ####
 
-!pip3 install mxnet --pre --user
+!pip3 install https://repo.mxnet.io/dist/python/cu110/mxnet_cu110-2.0.0b20210223-py3-none-manylinux2014_x86_64.whl
 !pip3 install scikit-learn pandas
 
 # Load Libraries
-import gluon
 import mxnet as mx
 from mxnet import nd
 import numpy as np
@@ -42,17 +41,17 @@ def transformations(data, labels):
     return data, label
 
 # Load data from the Gluon default data libraries
-train = gluon.data.vision.FashionMNIST(train=True, transform=transformations)
-test = gluon.data.vision.FashionMNIST(train=False, transform=transformations)
+train = mx.gluon.data.vision.FashionMNIST(train=True, transform=transformations)
+test = mx.gluon.data.vision.FashionMNIST(train=False, transform=transformations)
 
 # Build the DataLoaders
 batch_size = 100
 
-train_data = gluon.data.DataLoader(
+train_data = mx.gluon.data.DataLoader(
     train,
     batch_size=batch_size, shuffle=True, last_batch='discard')
 
-test_data = gluon.data.DataLoader(
+test_data = mx.gluon.data.DataLoader(
     test,
     batch_size=batch_size, shuffle=False, last_batch='discard')
 
@@ -61,27 +60,27 @@ test_data = gluon.data.DataLoader(
 ####
 
 # Instantiate the Model
-simple_network = gluon.nn.Sequential()
+simple_network = mx.gluon.nn.Sequential()
 with simple_network.name_scope():
-    simple_network.add(gluon.nn.Conv2D(channels=32, kernel_size=3, activation='relu'))
-    simple_network.add(gluon.nn.BatchNorm(momentum=0.1))
-    simple_network.add(gluon.nn.MaxPool2D(pool_size=2, strides=2))
-    simple_network.add(gluon.nn.Conv2D(channels=64, kernel_size=3, activation='relu'))
-    simple_network.add(gluon.nn.BatchNorm(momentum=0.1))
-    simple_network.add(gluon.nn.MaxPool2D(pool_size=2))
-    simple_network.add(gluon.nn.Dense(600))
-    simple_network.add(gluon.nn.DropOut(rate=0.5))
-    simple_network.add(gluon.nn.Dense(120))
-    simple_network.add(gluon.nn.Dense(10))
+    simple_network.add(mx.gluon.nn.Conv2D(channels=32, kernel_size=3, activation='relu'))
+    simple_network.add(mx.gluon.nn.BatchNorm(momentum=0.1))
+    simple_network.add(mx.gluon.nn.MaxPool2D(pool_size=2, strides=2))
+    simple_network.add(mx.gluon.nn.Conv2D(channels=64, kernel_size=3, activation='relu'))
+    simple_network.add(mx.gluon.nn.BatchNorm(momentum=0.1))
+    simple_network.add(mx.gluon.nn.MaxPool2D(pool_size=2))
+    simple_network.add(mx.gluon.nn.Dense(600))
+    simple_network.add(mx.gluon.nn.Dropout(rate=0.5))
+    simple_network.add(mx.gluon.nn.Dense(120))
+    simple_network.add(mx.gluon.nn.Dense(10))
 
 # Initialize Parameters
 simple_network.collect_params().initialize(mx.init.Xavier(magnitude=2.24), ctx=ctx)
 
 # optimisers
-trainer = gluon.Trainer(simple_network.collect_params(), 'adam', {'learning_rate': .001})
+trainer = mx.gluon.Trainer(simple_network.collect_params(), 'adam', {'learning_rate': .001})
 
 # Loss Function
-softmax_cross_entropy = gluon.loss.SoftmaxCrossEntropyLoss()
+softmax_cross_entropy = mx.gluon.loss.SoftmaxCrossEntropyLoss()
 
 # Setting the evaluation function
 def evaluate_accuracy(data_iterator, net):
@@ -146,16 +145,8 @@ for e in range(epochs):
 
 #### Visualise the training Loss
 plt.plot(iteration_list, loss_list)
-plt.xlabel("No. of Iteration")
-plt.ylabel("Loss")
-plt.title("Iterations vs Loss")
-plt.show()
 
 #### Visualise the training accuracy
 plt.plot(epoch_list, accuracy_list)
-plt.xlabel("No. of Iteration")
-plt.ylabel("Accuracy")
-plt.title("Iterations vs Accuracy")
-plt.show()
 
 

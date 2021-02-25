@@ -84,17 +84,9 @@ print('\nTest accuracy:', test_acc)
 
 #### Visualise the training Loss
 plt.plot(history.history['loss'])
-plt.xlabel("No. of Iteration")
-plt.ylabel("Loss")
-plt.title("Iterations vs Loss")
-plt.show()
 
 #### Visualise the training accuracy
 plt.plot(history.history['accuracy'])
-plt.xlabel("No. of Iteration")
-plt.ylabel("Accuracy")
-plt.title("Iterations vs Accuracy")
-plt.show()
 
 ### Confusion Matrix Report
 prediction_raw = model.predict(test_images)

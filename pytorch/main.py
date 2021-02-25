@@ -151,17 +151,9 @@ for epoch in range(num_epochs):
 
 #### Visualise the training Loss
 plt.plot(iteration_list, loss_list)
-plt.xlabel("No. of Iteration")
-plt.ylabel("Loss")
-plt.title("Iterations vs Loss")
-plt.show()
 
 #### Visualise the training accuracy
 plt.plot(iteration_list, accuracy_list)
-plt.xlabel("No. of Iteration")
-plt.ylabel("Accuracy")
-plt.title("Iterations vs Accuracy")
-plt.show()
 
 ### Confusion Matrix Report
 predictions_l = [predictions_list[i].tolist() for i in range(len(predictions_list))]

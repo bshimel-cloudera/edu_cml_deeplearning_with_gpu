@@ -30,36 +30,43 @@ See the relevant subfolders for each library:
 Each folder contains a `main.py` function that contains the code to install the libraries, load the data, setup the network and train the model. I will go over the tensorflow one here.
 
 Firstly, git clone the repo into a new project.
-<new_proj_screenshot>
+![New Project From Git](images/NewProjectScreen.png)
 
 Once it has all loaded, you will land into the project page.
-<project_screenshot>
+![Load Into Project](images/LoadIntoProject.png)
 
 From there you can create a new session. In the following example, I will use the native CML IDE but you can also leverage Jupyter as well. Notice that I have set GPUs to 1. Is it possible to leverage multiple GPUs. That, however, adds complexity to the code and requires careful consideration for how we train the model so I will not go over that here.
 
-<IDE_screenshot_with_session_screen>
+![Start Session](images/start_gpu_session.png)
 
 With our IDE and session available, we now need to install the relevant libraries. In the `main.py` script in my tensorflow subfolder you can see the pip commands to install the libraries at the top
 
-<screenshot_of_tf_stuff>
+![Start of TF Code](images/start_of_tf_code.png)
 
 Run these two lines to get the libraries installed. This can be done by selecting the two lines and hitting `Ctrl+Enter` (To check)
 
-<screenshot_of_install_running>
+![Install Libraries](images/installing_libs.png)
 
 With the libraries installed, we can run import the libraries and run a quick check to make sure that tensorflow is correctly leveraging gpu.
 
-<tf_library_check>
+---
+**NOTE** Libraries like tensorflow are normally packaged and released onto pypi and conda channels for specific CUDA versions down to the point release. CUDA 11.0 libraries may have issues with CUDA 11.1 for example. 
+
+If there is a mismatch between CUDA version and what the packaged library was compiled with it maybe necessary to compile the library for your specific flavour of CUDA from source.
+
+---
+
+![Checking TF Libraries](images/tf_library_check.png)
 
 To see how much we are using GPU I will open a terminal session and load `nvidia-smi` tool to track usage. Use `nvidia-smi -l` to open a refreshing tracker for GPU utilisation
 
-<nvidia-smi toolscreen>
+![Nvidia SMI screen](images/nvidia-smi_w_initial.png)
 
 Now we can run the rest of the script and watch our model train
 
 <screengrab of model code running>
 
-<screengrab of nvidia-smi with usage>
+![Nvidia SMI crunching model](images/nvidia-smi-with-usage.png)
 
 When our model is trained we can look at the model training results to see how good our model is.
 

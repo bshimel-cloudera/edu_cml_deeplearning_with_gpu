@@ -2,6 +2,10 @@
 # Main PyTorch Code Loop
 #
 
+########
+########  Setup Environment and install libs
+########
+
 ####
 #### Installing Required Libraries
 ####
@@ -20,6 +24,10 @@ import matplotlib.pyplot as plt
 # Check if CUDA is loaded properly
 mx.context.num_gpus()
 ctx = mx.gpu()
+
+########
+########  Build and train model
+########
 
 ####
 #### Setup the Dataset
@@ -131,6 +139,10 @@ for e in range(epochs):
 
     epoch_list.append(e)
     accuracy_list.append(train_accuracy)
+
+####
+#### Look at model train result
+####
 
 #### Visualise the training Loss
 plt.plot(iteration_list, loss_list)

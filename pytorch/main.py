@@ -2,6 +2,11 @@
 # Main PyTorch Code Loop
 #
 
+########
+########  Setup Environment and install libs
+########
+
+
 ####
 #### Installing Required Libraries
 ####
@@ -33,6 +38,12 @@ from model import FashionCNN
 
 # Check if CUDA is loaded properly
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
+########
+########  Build and train model
+########
+
+
 
 ####
 #### Setup the Dataset
@@ -131,6 +142,11 @@ for epoch in range(num_epochs):
         
         if not (count % 500):
             print("Iteration: {}, Loss: {}, Accuracy: {}%".format(count, loss.data, accuracy))
+
+
+####
+#### Look at model train result
+####
 
 
 #### Visualise the training Loss

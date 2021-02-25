@@ -2,6 +2,11 @@
 # Main Tensorflow Code Loop
 #
 
+########
+########  Setup Environment and install libs
+########
+
+
 ####
 #### Installing Required Libraries
 ####
@@ -19,6 +24,12 @@ from sklearn.metrics import confusion_matrix
 
 # Check if CUDA is loaded properly
 tf.config.list_physical_devices('GPU')
+
+
+########
+########  Build and train model
+########
+
 
 ####
 #### Setup the Dataset
@@ -66,6 +77,10 @@ history = model.fit(train_images, train_labels, batch_size=100, epochs=5)
 ###### Evaluate the Model
 test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
 print('\nTest accuracy:', test_acc)
+
+####
+#### Look at model train result
+####
 
 #### Visualise the training Loss
 plt.plot(history.history['loss'])

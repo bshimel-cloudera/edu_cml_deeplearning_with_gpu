@@ -1,4 +1,4 @@
-# Deep Learning with CML Runtimes with Cloudera Machine Learning
+# Deep Learning with GPUs in Cloudera Machine Learning
 
 Support Repo for blog article on Nvidia GPU Runtimes in CML
 
@@ -8,14 +8,14 @@ Support Repo for blog article on Nvidia GPU Runtimes in CML
 In our previous article, we demonstrated how to setup sessions in Cloudera Machine Learning (CML)'s to access Nvidia GPUs for accelerating Machine Learning Projects.
 When leveraging GPUs, a lot of the time can be lost wrangling with Nvidia drivers, CUDA versions and custom CML engines. With CML, we will simplify it somewhat for you.
 
-To show off how easily Data Scientists can get started with GPU compute on our platform, I will show three ways to go from 0 to GPU trained model deeplearning model with CML.
+To show off how easily Data Scientists can get started with GPU compute on our platform, I will show three ways to go from 0 to GPU trained model deep learning model with CML.
 
 ## Scenario
 
 To illustrate how to leverage these Nvidia GPU Runtimes, I will use a Computer Vision Image Classification example.
-We will train deeplearning models to classify fashion items leveraging the Fashion Mnist Dataset. 
+We will train deep learning models to classify fashion items leveraging the Fashion Mnist Dataset. 
 
-MNIST, a handwritten digits classification task, has been the Computer Vision 101 sample problem for years involving the classification of handwritten numerical digics. The problemset, however, hasn't kept up to the times and modern GPUs and algorithms will solve it faster than it takes for you to read this paragraph.
+MNIST, a handwritten digits classification task, has been the Computer Vision 101 sample problem for years involving the classification of handwritten numerical digits. The problem set, however, hasn't kept up to the times and modern GPUs and algorithms will solve it faster than it takes for you to read this paragraph.
 
 Fashion MNIST is a tougher classification challenge, designed as a drop in replacement. With the Fashion MNIST dataset, our algorithm has 10 different classes of clothing items to identify with 10,000 samples of each.
 
@@ -34,7 +34,7 @@ Firstly, git clone the repo into a new project.
 Once it has all loaded, you will land into the project page.
 ![Load Into Project](images/LoadIntoProject.png)
 
-From there you can create a new session. When creating a session, we can choose from different CPU / RAM and GPU configurations. In my case, I have selected 4 cores / 8GB RAM and 1 GPU. With FashionMNIST, 1 GPU is enough for us to fit the algorithm relatively quickly. For more advanced problems and with more complex deep learning models, more GPUs maybe needed. The techniques for leveraging multiple GPUs for deeplearning however can get complicated so I won't go over that today. 
+From there you can create a new session. When creating a session, we can choose from different CPU / RAM and GPU configurations. In my case, I have selected 4 cores / 8GB RAM and 1 GPU. With FashionMNIST, 1 GPU is enough for us to fit the algorithm relatively quickly. For more advanced problems and with more complex deep learning models, more GPUs maybe needed. The techniques for leveraging multiple GPUs for deep learning however can get complicated so I won't go over that today. 
 
 In the following examples, I will use the native CML IDE but Jupyter is baked into CML as well should you prefer that.
 

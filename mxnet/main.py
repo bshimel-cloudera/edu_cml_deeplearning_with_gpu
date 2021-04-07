@@ -10,8 +10,8 @@
 #### Installing Required Libraries
 ####
 
-!pip3 install mxnet-cu110==1.9.0b20210226 -f https://dist.mxnet.io/python/cu110
-!pip3 install scikit-learn pandas
+%pip3 install mxnet-cu110==1.9.0b20210226 -f https://dist.mxnet.io/python/cu110
+%pip3 install scikit-learn pandas
 
 # Load Libraries
 import mxnet as mx

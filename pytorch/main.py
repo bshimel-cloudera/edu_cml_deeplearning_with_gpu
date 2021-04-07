@@ -11,8 +11,8 @@
 #### Installing Required Libraries
 ####
 
-%pip3 install torch==1.7.1+cu110 torchvision==0.8.2+cu110 -f https://download.pytorch.org/whl/torch_stable.html
-%pip3 install scikit-learn pandas
+%pip install torch==1.7.1+cu110 torchvision==0.8.2+cu110 -f https://download.pytorch.org/whl/torch_stable.html
+%pip install scikit-learn pandas
 
 
 # Load Libraries

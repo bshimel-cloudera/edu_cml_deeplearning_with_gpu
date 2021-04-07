@@ -11,8 +11,8 @@
 #### Installing Required Libraries
 ####
 
-%pip3 install tensorflow
-%pip3 install scikit-learn pandas
+%pip install tensorflow
+%pip install scikit-learn pandas
 
 
 # import libraries

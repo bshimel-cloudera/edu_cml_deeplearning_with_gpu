@@ -10,9 +10,9 @@
 ####
 #### Installing Required Libraries
 ####
+!pip install tensorflow --progress-bar off
+!pip install scikit-learn pandas --progress-bar off
 
-%pip install tensorflow
-%pip install scikit-learn pandas
 
 
 # import libraries
